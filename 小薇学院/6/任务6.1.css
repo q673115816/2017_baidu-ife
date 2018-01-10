@@ -1,0 +1,313 @@
+*{
+	margin-left: 22.5px;
+	font-size: 12px;
+	font-family: "微软雅黑";
+
+}
+p ,span ,i, b, p, img{
+	margin:0;
+}
+
+body{
+	background-color: #f0f0f0;
+}
+header{
+
+}
+#ind{
+	color: #fff;
+	font-family: "黑体";
+	display: inline-block;
+	color: #fff;
+	background: #d55d5c;
+	padding: 45px  30px 2px  2px;
+	margin-left: 22.5px;
+}
+time{
+	color: #d45d5c;
+	font-family: "黑体";
+	margin-left: 745px;
+}
+#wrap{
+	width: 980px;
+	height: 1386px;
+	margin:0 auto;
+	background-color: #fff;
+}
+.top-th{
+	border:1px solid #938e8c;
+	width: 890px;
+	margin-bottom: 25px;
+}
+#aside-th{
+	width: 201px;
+	border:1px solid #cc8091;
+	margin-left: 0;
+}
+#content-top{
+	position: absolute;
+	width: 912.5px;
+}
+#content-min{
+	margin-top: 370px;
+}
+#top{
+	width: 203px;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+#top > *{
+	margin-left: 0;
+}
+#p1{
+	text-decoration: underline;
+	font-size: 24px;
+	line-height: 40px;
+}
+#p2{
+	color:#676767;
+	font-family: "楷体";
+	line-height: 10px; 
+}
+#qibai{
+	font-size: 116px;
+	color: #75b86b;
+	text-decoration: underline;
+	font-style: oblique;
+	margin-left: -10px;
+	display:block;
+}
+.p3{
+	color: #cc8091
+}
+#sandianer{
+	font-size: 55px;
+	display: block;
+	float: left;
+	margin-top: -12px;
+	margin-right: 4px;
+
+}
+#css1{
+	font-size: 21px;
+	display: block;
+	margin-top: 21px;
+	line-height: 0.8em;
+}
+#css2{
+	font-size: 12px;
+	display: block;
+	line-height: 0.8em;
+}
+article   b{
+	font-size: 16px;
+	text-decoration: underline;
+	margin-left: 0;
+}
+article {
+	color:#767777;
+	font-family: "宋体";
+	line-height: 16px;
+}
+article p{
+	float: left;
+}
+article b{
+}
+article p:first-child {
+	width: 230px;
+}
+article p:nth-child(2){
+	width: 205px;
+	margin-left: 20px;
+	opacity: 0.7;
+}
+article p:last-child:not(b) {
+	width: 130px;
+	margin-left: 20px;
+	letter-spacing: 2px;
+}
+article p:first-child b{
+	color: #418c59;
+}
+article p:nth-child(2) b{
+	color: #d2994f;
+}
+article p:last-child b{
+	color: #cc7680;
+}
+article p:last-child *{
+	margin-left: 0;
+}
+article p:last-child i {
+	color: #cd4a48;
+	opacity: 0.7;
+}
+#content-bot{
+	clear: both;
+	margin-top: 580px;
+}
+#bot-left{
+	width: 415px;
+	float: left;
+}
+#tte {
+	border-bottom: 2px solid #0f4569;
+	margin-bottom: 20px;
+	line-height: 32px;
+}
+#tnext{
+	font-size: 42px;
+	color: #11456b;
+	font-weight: bold;
+}
+#the{
+	font-size: 72px;
+	color:#f5e327;
+	font-family: "黑体";
+	font-weight: bold;
+	font-style: oblique;
+}
+#lay{
+	color: #11456b;
+	font-size: 33px;
+	font-family: "黑体";
+	font-weight: bold;
+}
+#txt {
+	font-family: "宋体";
+	line-height: 16px;
+	color: #767777;
+}
+#wrapimg {
+	float: right;
+	padding: 20px 10px 20px 20px;
+}
+#txt span {
+	font-size: 70px;
+	color:#f5e327;
+	display: inline-block;
+	float: left;
+	line-height:70px;
+}
+.bot-right {
+	width: 458px;
+	float: left;
+}
+.imgwp {
+	position: relative;
+}
+.imgin {
+	width: 458px;
+	height: 61px;
+	position: absolute;
+	background-color: rgba(0,0,0,0.5);
+	bottom: 0;
+	color: #72b16a;
+	letter-spacing: 140%;
+	font-style: italic;
+}
+#greenvertical {
+	display: inline-block;
+	border: 1.5px solid #72b16a;
+	height: 41px;
+	margin:5px 10px 0 30px;
+	float: left;
+}
+.imgin span {
+	font-size: 26px;
+	color: #fff;
+	opacity: 1;
+	font-style: normal;
+	line-height: 61px;
+}
+.bot-right   * {
+	margin-left: 0;
+}
+#gray {	
+	background-color: #eeeed6; 
+	height: 318px;
+	width: 459px;
+	margin-top: 20px;
+	overflow: hidden;
+}
+#menu {
+	/*text-align: center;*/
+	margin: 30px 0;
+}
+
+#menu-1 *{
+	font-size: 16px;
+	color: #5a5b5b;
+	font-family: "宋体";
+	line-height: 20px;
+}
+.sjx {
+	float: left;
+	margin: 6px 6px 0 16px;
+}
+.span {
+	font-style: italic;
+	text-align: right;
+	font-size: 12px;
+}
+#red-time{
+	background-color: #d55d5c;
+	float: left;
+	width: 260px;
+	height: 160px;
+	color: #fff;
+}
+#zero {
+	font-size: 110px;
+	line-height: 160px;
+	float: left;
+	margin-left: 10px;
+}
+#vertical {
+	border: 1px solid #fff;
+	height: 84px;
+	margin: 36px 5px;
+	display: inline-block;
+	float: left;
+}
+#wtf {
+	text-align: left;
+	display: block;
+	margin-top: 36px;
+}
+#week{
+	line-height: 24px;
+	font-family: "黑体";
+	font-size: 21px;
+}
+#hw1 {
+	font-family: "黑体";
+	line-height: 6px;
+}
+#wh {
+	float: left;
+	width: 180px;
+	font-size: 14px;
+	color: #5a5b5b;
+	font-family: "黑体";
+	font-style: italic;
+	line-height: 16px;
+	text-indent: 3em;
+	margin-left: 15px;
+}
+#bot-th{
+	margin-bottom: 0;
+}
+footer {
+	clear: both;
+	float: left;
+	margin-top: 45px;
+}
+footer span {
+	display: block;
+	float: right;
+	color: #d45d5c;
+	font-family: "黑体";
+}

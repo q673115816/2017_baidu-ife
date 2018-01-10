@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,
+        body {
+            font-family: "微软雅黑";
+        }
+
+        th {
+            padding: 0 20px;
+            font-size: 24px;
+            line-height: 56px;
+        }
+
+        input {
+            height: 56px;
+            width: 324px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: 0;
+            padding-left: 10px;
+            font-size: 36px;
+            line-height: 56px;
+        }
+
+        button {
+            height: 60px;
+            width: 80px;
+            border: 0;
+            border-radius: 5px;
+            padding: 0;
+            outline: 0;
+            cursor: pointer;
+            background: skyblue;
+            color: #fff;
+            font-size: 24px;
+            font-family: "微软雅黑";
+            line-height: 56px;
+        }
+
+        span {
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrap">
+    <table>
+        <tr>
+            <th>名称</th>
+            <td>
+                <input type="text" id="input" data-id="name">
+            </td>
+            <td>
+                <button type="button" id="button">验证</button>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <span id="output">必填，长度为6~16个字符</span>
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
+<script>
+    var rule = [
+        {
+            name: 'name',
+            tips: '格式正确',
+            reg: /^\w{6,16}$/,
+        },
+    ]
+
+    function Start() {
+        this.ips = document.getElementById('input');
+        this.btn = document.getElementById('button');
+        this.span = document.getElementById('output');
+    }
+
+    Start.prototype.run = function () {
+        this.btn.onclick = function(){
+            console.log(1);
+        this.btn.addEventListener('click',function(){
+            return this.click.bind(this);
+        },false);
+    }
+    Start.prototype.click = function(){
+        for (var i = 0; i < rule.length; i++) {
+            if(rule[i].name===this.btn.dataset.id){
+                if(rule[i].reg.test(this.ips.value)){
+                    this.span.innerText = rule[i].tips;
+                    this.span.style.color = 'green';
+                    this.btn.style.borderColor = 'green';
+                }else{
+                    this.span.innerText = '格式错误';
+                    this.span.style.color = 'red';
+                    this.btn.style.borderColor = 'red';
+                }
+            };
+
+        }
+    }
+    new Start().run();
+</script>

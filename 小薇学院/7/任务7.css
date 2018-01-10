@@ -1,0 +1,408 @@
+* {
+
+	font-family: "黑体";
+}
+.wrap {
+	width: 1280px;
+	margin:0 auto;
+	padding-top: 50px;
+}
+header {
+	position: fixed;
+	width: 1280px;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 55px;
+	background-color: #fff;
+}
+header a {
+	text-decoration: none;
+}
+#ind {
+	line-height: 55px;
+	font-size: 25px;
+	color: #000;
+}
+.nav {
+	float: right;
+}
+.nav li {
+	margin-left: 30px;
+	float: left;
+	list-style: none;
+}
+#login {
+	margin-right: 40px;
+	font-size: 14px;
+	color: rgb(231,79,77);
+}
+
+.nav a{
+	color: rgb(120,123,131);
+	display: inline-block;
+	height: 38px;
+}
+.nav a:hover {
+	border-bottom: solid rgb(231,80,77) 4px;
+	color: rgb(231,79,77);
+}
+.START {
+	height: 690px;
+	background: url(image/banner.jpg);
+	/*margin-top: 50px;*/
+}
+.banner {
+	display: block;
+	height: 63px;
+	width: 330px;
+	background-color:  rgb(231,80,77);
+	text-decoration: none;
+	font-size: 30px;
+	text-align: center;
+	color: #fff;
+	line-height: 63px;
+	position: relative;
+	top: 400px;
+	left: 125px;
+	letter-spacing: 5px;
+}
+.banner:hover {
+	background-color: #fff;
+	color: rgb(231,79,77);
+}
+.p4p {
+	height: 250px;
+	text-align: center;
+}
+.p4p-div {
+	width: 318px;
+	float: left;
+}
+.p4p img {
+	margin: 45px auto;
+}
+.p4p p {
+	width: 160px;
+	margin: 0 auto;
+	font-size: 14px;
+	color: gray;
+	
+}
+.biglogo {
+	background-color: #ededed;
+	text-align: center;
+	height: 360px;
+}
+.biglogo img {
+	margin-top: 90px ;
+}
+.biglogo p {
+	color: #a1a1a1;
+	font-size: 45px;
+}
+.findmenu {
+	height: 340px;
+	background: url(image/map.png);
+	text-align: center;
+	color: #fff;
+}
+.findmenu h2 {
+	padding-top: 50px;
+	margin: 0;
+}
+.findmenu p {
+	font-size: 0.8em;
+	margin-bottom: 50px;
+	margin-top: 20px;
+}
+.findul {
+	list-style: none;
+	padding: 0;
+	margin: 0 auto;
+	display: inline-block;
+}
+.findul>li {
+	float: left;
+	background-color: #fff;
+	margin: 0 14px;
+	color: #A8A9AA;
+}
+.findmenu ul a {
+	text-decoration: none;
+	display: block;
+	color: #fff;
+	background-color: #BE4E48;
+}
+.find_city {
+	list-style: none;
+	padding: 0;
+	border: #BE4E48 1px solid;
+	width: 236px;
+	text-align: left;
+	background-color: #E3E2E4;
+}
+.find_city li{
+	padding-left: 30px;
+	height: 25px;
+	line-height: 25px;
+}
+.find_city li:hover{
+	background:#BE4E48 url(image/good.gif) no-repeat;
+}
+.choose {
+	width: 236px;
+	height: 36px;
+	line-height: 36px;
+}
+.pro {
+	position: relative;
+	border: #BE4E48 solid 1px;
+}
+.pro ul {
+	position: absolute;
+}
+#find {
+	background-color: #be4e48;
+	border:none;
+	color: #fff;
+	letter-spacing: 1.15em;
+	font-size: 0.9em;
+}
+.activicty {
+	height: 606px;
+	background-color: #f7f7f7;
+	text-align: center;
+	font-size: 0.6em;
+}
+.activicty img {
+	padding: 12px 6px;
+	background-color:#fff; 
+}
+.activicty-1 {
+	margin: 100px 150px;
+	width: 988px;
+	height: 388px;
+}
+.activicty div {
+	float: left;
+	margin-left: 30px;
+}
+.activicty h3 {
+	margin: 6px auto;
+	font-size: 1.1em;
+}
+.activicty span {
+	/*letter-spacing: 1em;*/
+}
+.newbj {
+	overflow: hidden;
+	line-height: 30px;
+}
+.newbj img {
+	float: left;
+}
+.newbj div {
+	text-align: center;
+	width: 290px;
+	float: left;
+	margin:0 69px;
+}
+.newbj h2 {
+	font-size: 1.4em;
+	margin-top: 160px;
+}
+.newbj span {
+	color: #e5676a;
+}
+.newbj p {
+	font-size: 12px;
+	color: #b1b1b1;
+}
+.newbj a {
+	display: inline-block;
+	text-decoration: none;
+	color: #e5676a;
+	border: solid 1px #e5676a ; 
+	padding: 4px 30px;
+}
+.newlife {
+}
+.redlife {
+	width: 413px;
+	background-color: #e74f4d;
+	color: white;
+}
+.redlife a {
+	color: white;
+	border: 1px white solid;
+}
+.whitelife {
+	width: 436px;
+} 
+.whitelife a {
+	color: #e74f4d;
+	border: 1px #e74f4d solid;
+}
+.redlife,.whitelife {
+	height: 521px;
+	float: left;
+	font-size: 1.3em;
+	line-height: 1.5em;
+	text-align: center;
+	overflow: hidden;
+}
+.new-p {
+	margin-top: 160px;
+}
+.newlife a {
+	display: inline-block;
+	text-decoration: none;
+	padding: 4px 30px;
+}
+.tabbb {
+	height: 750px;
+	overflow: hidden;
+}
+.tabbb-title {
+	text-align: center;
+}
+.tabbb-title h2 {
+	margin-top: 110px;
+	margin-bottom: 6px;
+}
+.tabbb-title p {
+	color: gray;
+	font-size: 0.8em;
+}
+.table-wrap {
+	margin: 0 auto;
+	height: 400px;
+	margin-top: 100px;
+}
+.law {
+	width: 280px;
+	float: left;
+	margin-left: 120px;
+}
+.law p{
+	color: gray;
+	font-size: 0.5em;
+}
+#table-1 {
+	float: left;
+	margin-left: 70px;
+}
+#table-1 table {
+	border-spacing: 10px;
+}
+#table-1 input {
+	width: 310px;
+	height: 40px;
+}
+#table-1 input,textarea {
+	background-color: #ededee;
+	border: none;
+}
+#table-1 button {
+	width: 638px;
+	height: 44px;
+	border: none;
+
+}
+.information {
+	height: 360px;
+	background-color: #32353e;
+	text-align: center;
+	color: white;
+	overflow: hidden;
+}
+.information h2 {
+	font-size: 1.3em;
+	margin-top: 90px;
+	margin-bottom: 7px;
+}
+.information p {
+	width: 480px;
+	margin:0 auto;
+	font-size: 12px;
+	line-height: 1.4em;
+}
+.information div {
+	margin: 30px 0 35px;
+}
+.information img {
+	margin-right: 20px;
+}
+#ipem {
+	width: 430px;
+	height: 35px;
+	color: #cfcfcf;
+	font-size: 1.0em;
+}
+#sbem {
+	height: 41px;
+	width: 80px;
+	background-color: #6f7178;
+	border: none;
+	color: #fff;
+	font-size: 1.0em;
+	letter-spacing: 0.3em;
+}
+footer {
+	height: 57px;
+	background-color: #303039;
+}
+footer a {
+	display: inline-block;
+	color: white;
+	text-decoration: none;
+	font-size: 0.8em;
+	margin:20px 40px 10px 100px;
+}
+.ddd {
+}
+.vertical {
+	display: inline-block;
+	float: left;
+	width: 2px;
+	height: 45px;
+	background-color:#999; 
+	margin-top: 130px;
+}
+#violently {
+	width: 30px;
+	display: ;
+	height: 2px;
+	background-color: #fff;
+	margin: 6px auto;
+}
+#redvio {
+	width: 30px;
+	height: 2px;
+	background-color: #fff;
+	margin: 20px auto;
+}
+#gyvio {
+	width: 30px;
+	height: 2px;
+	background-color: #ababab;
+	margin: 20px auto;
+}
+.rvio {
+	width: 30px;
+	height: 2px;
+	background-color: #eb6664;
+	margin:0 auto;
+}
+.clearfix:after {
+	display: block;
+content: " ";
+clear: both;
+height: 0;
+overflow: hidden;
+}
+.fl {
+	text-align: left;
+	background: url(image/arrow.png) 210px center no-repeat;
+}

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .wrap {
+      margin: 0 auto;
+    }
+
+    table,
+    p {
+      margin: 0 auto;
+      text-align: center;
+      width: 880px;
+      /* height: 880px; */
+      border-collapse: collapse;
+    }
+
+    th {
+      font-weight: normal;
+      width: 80px;
+      height: 80px;
+    }
+
+    td {
+      border: 1px solid #ddd;
+      box-sizing: border-box;
+    }
+
+    .active {
+      background-color: #f00;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <table>
+      <tr>
+        <th></th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+        <th>8</th>
+        <th>9</th>
+        <th>10</th>
+      </tr>
+      <tr>
+        <th>1</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>2</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>3</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>4</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>5</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>6</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>7</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>8</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>9</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>10</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+    <p>
+      <!-- <input type="text" name="input" value="" id="input"> -->
+      <button type="button" id="btn1">前进</button>
+      <button type="button" id="btn2">后退</button>
+      <button type="button" id="btn3">左转</button>
+      <button type="button" id="btn4">右转</button>
+    </p>
+  </div>
+</body>
+
+</html>
+<script>
+  var arr = ['top', 'right', 'button', 'left']
+  var tds = document.getElementsByTagName('td');
+  var btns = document.getElementsByTagName('button');
+
+
+
+  btns[0].addEventListener('click', go, false);
+  btns[1].addEventListener('click', back, false);
+  btns[2].addEventListener('click', function () {
+    return change('left')
+  }, false);
+  btns[3].addEventListener('click', function () {
+    return change('right')
+  }, false);
+
+
+
+
+  function go() {
+    var now = document.getElementsByClassName('active')[0];
+    var way = now.getAttribute('look');
+    // var way = now.getAttribute('look');
+    switch (tds[num].getAttribute('look')) {
+      case arr[0]:
+        num -= 10;
+        bg(num, arr[0]);
+        break;
+      case arr[1]:
+        num += 1;
+        bg(num, arr[1]);
+        break;
+      case arr[2]:
+        num += 10;
+        bg(num, arr[2]);
+        break;
+      case arr[3]:
+        num -= 1;
+        bg(num, arr[3]);
+        break;
+
+      default:
+        break;
+    }
+
+    return;
+  }
+
+
+  function back() {
+    return;
+  }
+
+
+
+
+  function change(look) {
+    var now = document.getElementsByClassName('active')[0];
+    // now.setAttribute('look', look);
+    now.style.border = 0;
+    if (look === 'right') {
+      switch (tds[num].getAttribute('look')) {
+        case arr[0]:
+          tds[num].style.borderRight = '10px solid #0f0'
+          now.setAttribute('look', arr[1]);
+          break;
+        case arr[1]:
+          tds[num].style.borderBottom = '10px solid #0f0'
+          now.setAttribute('look', arr[2]);
+          break;
+        case arr[2]:
+          tds[num].style.borderLeft = '10px solid #0f0'
+          now.setAttribute('look', arr[3]);
+          break;
+        case arr[3]:
+          tds[num].style.borderTop = '10px solid #0f0'
+          now.setAttribute('look', arr[0]);
+          break;
+
+        default:
+          break;
+      }
+    }
+    if (look === 'left') {
+      switch (tds[num].getAttribute('look')) {
+        case arr[0]:
+          tds[num].style.borderLeft = '10px solid #0f0'
+          now.setAttribute('look', arr[3]);
+          break;
+        case arr[1]:
+          tds[num].style.borderTop = '10px solid #0f0'
+          now.setAttribute('look', arr[0]);
+          break;
+        case arr[2]:
+          tds[num].style.borderRight = '10px solid #0f0'
+          now.setAttribute('look', arr[1]);
+          break;
+        case arr[3]:
+          tds[num].style.borderBottom = '10px solid #0f0'
+          now.setAttribute('look', arr[2]);
+          break;
+
+        default:
+          break;
+      }
+    }
+  }
+
+
+
+
+
+
+  var num = Math.floor(Math.random() * tds.length);
+
+  function bg(num, old) {
+    num = num;
+    for (let i = 0; i < tds.length; i++) {
+      tds[i].setAttribute('look', '');
+      tds[i].className = "";
+    }
+    tds[num].className = "active";
+    if (old) {
+      tds[num].setAttribute('look', old);
+    }
+    else{
+      tds[num].setAttribute('look', arr[0]);
+    }
+    switch (tds[num].getAttribute('look')) {
+      case arr[0]:
+        tds[num].style.borderTop = '10px solid #0f0'
+        break;
+      case arr[1]:
+        tds[num].style.borderBottom = '10px solid #0f0'
+        break;
+      case arr[2]:
+        tds[num].style.borderLeft = '10px solid #0f0'
+        break;
+      case arr[3]:
+        tds[num].style.borderRight = '10px solid #0f0'
+        break;
+
+      default:
+        break;
+    }
+  }
+
+
+
+
+
+
+  bg(num);
+  console.log(num);
+</script>

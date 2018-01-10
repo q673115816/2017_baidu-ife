@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap {
+            margin: 0 auto;
+        }
+
+        table,
+        p {
+            margin: 0 auto;
+            text-align: center;
+            width: 660px;
+            border-collapse: collapse;
+        }
+
+        th {
+            font-weight: normal;
+            width: 60px;
+            height: 60px;
+        }
+
+        td {
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .active {
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <table>
+            <tr>
+                <th></th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+                <th>10</th>
+            </tr>
+            <tr>
+                <th>1</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>4</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>5</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>6</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>7</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>8</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>9</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>10</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <p>
+            <button type="button" id="btn1">前进</button>
+            <button type="button" id="btn2" value="back">后转</button>
+            <button type="button" id="btn3" value="left">左转</button>
+            <button type="button" id="btn4" value="right">右转</button>
+        </p>
+    </div>
+</body>
+
+</html>
+<script>
+    var tds = document.getElementsByTagName('td');
+    var btn = document.getElementsByTagName('button');
+    var arr = [];
+    var num = null;
+    var that;
+
+    function getRandom(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) - min;
+    }
+
+
+    function Block(obj) {
+        var obj = obj || {};
+        this.width = obj.width || 60;
+        this.height = obj.height || 20;
+        this.backgroundColor = 'green';
+        this.direction = obj.direction || 'top';
+        this.x = obj.x || 0;
+        this.y = obj.y || 0;
+        that = this;
+    }
+
+
+    Block.prototype.add = function(a) {
+        var div = document.createElement('div');
+        if (!num) {
+            if (num === 0) {
+                num = 0;
+            } else {
+                num = getRandom(0, tds.length);
+            }
+        }
+        remove(a);
+        arr.push(div);
+        tds[num].style.backgroundColor = 'red';
+        tds[num].appendChild(div);
+        div.style.backgroundColor = this.backgroundColor;
+        div.style.width = this.width + 'px';
+        div.style.height = this.height + 'px';
+        div.style.position = 'absolute';
+        div.style.left = this.x + 'px';
+        div.style.top = this.y + 'px';
+    }
+
+    btn[0].addEventListener('click', function() {
+        return going(num);
+    }, false);
+    btn[1].addEventListener('click', change, false);
+    btn[2].addEventListener('click', change, false);
+    btn[3].addEventListener('click', change, false);
+
+
+    //排他
+    function remove(a) {
+        tds[num].style.backgroundColor = '#fff';
+        for (var i = 0; i < arr.length; i++) {
+            tds[num].removeChild(arr[0]);
+            arr.splice(0, 1);
+        }
+    }
+
+    //前进
+    function going(a) {
+        //bug
+        // 补充方向
+        if (a % 10 == 0 && that.direction === 'left') {
+            alert('已经到边界了')
+            return;
+        }
+        if (a < 10 && that.direction === 'top') {
+            alert('已经到边界了')
+            return;
+        }
+        if (a > 89 && that.direction === 'bottom') {
+            alert('已经到边界了')
+            return;
+        }
+        if (a % 10 == 9 && that.direction === 'right') {
+            alert('已经到边界了')
+            return;
+        }
+
+
+
+
+        remove(a);
+        switch (that.direction) {
+            case 'top':
+                num -= 10;
+                break;
+            case 'bottom':
+                num += 10;
+                break;
+            case 'right':
+                num += 1;
+                break;
+            case 'left':
+                num -= 1;
+                break;
+        }
+        that.add(num);
+    }
+
+    function change() {
+        switch (this.value) {
+            case 'right':
+                switch (that.direction) {
+                    case 'top':
+                        that = new Block(right);
+                        that.add();
+                        break;
+                    case 'right':
+                        that = new Block(bottom);
+                        that.add();
+                        break;
+                    case 'bottom':
+                        that = new Block(left);
+                        that.add();
+                        break;
+                    case 'left':
+                        that = new Block(top);
+                        that.add();
+                        break;
+                }
+                break;
+            case 'left':
+                switch (that.direction) {
+                    case 'top':
+                        that = new Block(left);
+                        that.add();
+                        break;
+                    case 'right':
+                        that = new Block(top);
+                        that.add();
+                        break;
+                    case 'bottom':
+                        that = new Block(right);
+                        that.add();
+                        break;
+                    case 'left':
+                        that = new Block(bottom);
+                        that.add();
+                        break;
+                }
+                break;
+            case 'back':
+                switch (that.direction) {
+                    case 'top':
+                        that = new Block(bottom);
+                        that.add();
+                        break;
+                    case 'right':
+                        that = new Block(left);
+                        that.add();
+                        break;
+                    case 'bottom':
+                        that = new Block(top);
+                        that.add();
+                        break;
+                    case 'left':
+                        that = new Block(right);
+                        that.add();
+                        break;
+                }
+                break;
+        }
+    }
+
+    var right = {
+        width: 20,
+        height: 60,
+        direction: 'right',
+        x: 40,
+        y: 0
+    }
+    var top = {
+        width: 60,
+        height: 20,
+        direction: 'top',
+        x: 0,
+        y: 0
+    }
+    var left = {
+        width: 20,
+        height: 60,
+        direction: 'left',
+        x: 0,
+        y: 0
+    }
+    var bottom = {
+        width: 60,
+        height: 20,
+        direction: 'bottom',
+        x: 0,
+        y: 40
+    }
+
+
+    new Block().add(num);
+</script>

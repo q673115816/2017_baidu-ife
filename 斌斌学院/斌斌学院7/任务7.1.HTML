@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      border: 1px solid #000;
+      width: 47%;
+      height: 80%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .wrap {
+      position: absolute;
+      width: 800px;
+      height: 200px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    p {
+      position: absolute;
+      width: 800px;
+      height: 200px;
+      left: 50%;
+      top: 80%;
+      text-align: center;
+      transform: translate(-50%, -50%);
+    }
+
+    .active {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div>
+      <div>
+        <div></div>
+        <div></div>
+      </div>
+      <div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div>
+      <div>
+        <div></div>
+        <div></div>
+      </div>
+      <div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+  <p>
+    <span id="a">正序</span>
+    <span id="b">中序（未实现）</span>
+    <span id="c">倒序</span>
+  </p>
+</body>
+
+</html>
+<script>
+  var boxs = document.getElementsByTagName('div');
+  var a = document.getElementById('a');
+  var b = document.getElementById('b');
+  var c = document.getElementById('c');
+  var leng = boxs.length;
+  var count = 0;
+  a.addEventListener('click', fna, false);
+  // b.addEventListener('click', fnb, false);
+  c.addEventListener('click', fnc, false);
+
+  function fna(e) {
+    var timer = setInterval(function () {
+      for (var i = 0; i < boxs.length; i++) {
+        boxs[i].style.backgroundColor = '#fff';
+      }
+      if (count >= leng) {
+        count = 0;
+        clearInterval(timer);
+        return;
+      }
+      boxs[count].style.backgroundColor = 'red';
+      count++;
+    }, 500)
+  }
+
+  // function fnb(e) {
+  //   var timer = setInterval(function () {
+  //     for (var i = 0; i < boxs.length; i++) {
+  //       boxs[i].style.backgroundColor = '#fff';
+  //     }
+  //     boxs[count].style.backgroundColor = 'red';
+  //       clearInterval(timer);
+  //     count++;
+  //   }, 500)
+  // }
+
+  function fnc(e) {
+    var timer = setInterval(function () {
+      for (var i = 0; i < boxs.length; i++) {
+        boxs[i].style.backgroundColor = '#fff';
+      }
+      leng--;
+      boxs[leng].style.backgroundColor = 'red';
+      if (leng < 0) {
+        leng = boxs.length;
+        clearInterval(timer);
+        return;
+      }
+    }, 500)
+  }
+
+
+
+
+
+
+  // for (var i = 0; i < boxs.length; i++) {
+  //   boxs[i].addEventListener('click',fn,false);
+  // }
+  // function fn (e) {
+  //   var e = e || window.event;
+  //   t = e.target || e.srcElement;
+  //   window.event?cancelBubble = true:e.stopPropagation();
+  //   for (var i = 0; i < boxs.length; i++) {
+  //     boxs[i].style.backgroundColor = '#fff';
+  //   }
+  //   t.style.backgroundColor = 'red';
+  // }
+</script>

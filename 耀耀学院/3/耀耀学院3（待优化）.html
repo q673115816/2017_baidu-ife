@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .wrap {
+      width: 500px;
+      text-align: center;
+      margin: 100px auto;
+    }
+
+    th {
+      text-align: right;
+    }
+    td {
+      width: 40%;
+    }
+
+    #atschool_ select {
+      width: 100%;
+      display: none;
+    }
+
+    .wrap .none {
+      display: none;
+    }
+
+    #atschool_ select.current {
+      display: block;
+    }
+
+    #workin {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <table class="wrap">
+    <tr>
+      <th></th>
+      <td>
+        <label for="atschool">
+          <input type="radio" name="inschool" value="student" id="atschool"> 在校生
+        </label>
+      </td>
+      <td>
+        <label for="unschool">
+          <input type="radio" name="inschool" value="unstudent" id="unschool"> 非在校生
+        </label>
+      </td>
+    </tr>
+    <tr id="atschool_" class="none">
+      <th>学校</th>
+      <td>
+        <select name="" id="where" class="current">
+          <option value="beijing" selected>北京</option>
+          <option value="shanghai">上海</option>
+        </select>
+      </td>
+      <td>
+        <select class="current" id="beijing">
+          <option value="bjuniversity">北京大学</option>
+        </select>
+        <select id="shanghai">
+          <option value="shuniversity">上海交大</option>
+        </select>
+      </td>
+    </tr>
+    <tr id="unschool_" class="none">
+      <th>
+        <label for="workin">
+          就业单位</label>
+      </th>
+      <td colspan="2">
+        <input type="text" name="work" placeholder="" id="workin">
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>
+<script>
+  var radio = document.querySelectorAll('input[type=radio]');
+  var tr = document.getElementsByTagName('tr');
+  var se = tr[1].getElementsByTagName('select');
+  var where = document.getElementById('where');
+  var bjs = document.getElementById('beijing');
+  var shs = document.getElementById('shanghai');
+
+
+
+where.addEventListener('change',change,false);
+function change () {
+  for (var i = 1; i < se.length; i++) {
+    se[i].className = '';
+  }
+  if(where.value =='beijing'){
+    bjs.className = 'current';
+  }else if(where.value == 'shanghai'){
+    shs.className = 'current';
+  }
+}
+  for (var i = 0; i < radio.length; i++) {
+    radio[i].setAttribute('num', i)
+    radio[i].onclick = function () {
+      for (var j = 1; j < tr.length; j++) {
+        tr[j].className = 'none';
+      }
+      tr[1 + this.getAttribute('num') * 1].className = '';
+    };
+  };
+
+</script>

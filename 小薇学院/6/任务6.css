@@ -1,0 +1,97 @@
+	*{
+		margin:0;
+		padding: 0;
+	}
+	#wrap{
+		width: 980px;
+		height: 1386px;
+		font-size: 12px;
+		font-family: '微软雅黑';
+		line-height: 16px;
+		margin:0 auto;
+		border:1px solid blue;
+		line-height: 16px;
+	}
+	#wrap-in{
+		border:red solid 2px;
+		width: 890px;
+		border: solid #938e8c;
+		border-width: 2px 0;
+		margin: 61px 44px 44px ;
+		padding-top: 25px;
+		position: absolute;
+
+	}
+	#ttle{
+		background-color: #d55d5c;
+		display: inline-block;
+		color: #fff;
+		width: 110px;/*
+		position: absolute;
+		bottom: 0;*/
+		padding: 110px 0 2px 4px;
+	}
+	.wp{
+		display: table;
+		margin-bottom: 80px;
+	}
+	.main-top ,.main-bottom{
+		display: table-header-group;
+	}
+	.top-left,.top-right,.bottom-left,.bottom-right{
+		display: table-cell;
+	}
+	.top-right{
+		width: 203px;
+		border-top: 2px solid #cc8091;
+		position: absolute;
+		right: 0;
+	}
+	.bottom-right{
+		position: absolute;
+		right: 0;
+	}
+	.top-left{
+		width: 641px;
+	}
+	.bottom-right{
+		width: 458px;
+	}
+	.qibai{
+		font-size:116px ;
+		color:#75b86b;
+		text-decoration: underline;
+	}
+	time{
+		color: #d45d5c;/*
+		position: absolute;
+		bottom: 0;
+		right:0;*/
+		padding-bottom: 2px;
+	}
+	header{
+		height: 61px;
+		width: 892px;
+		/*position: absolute;*/
+	}
+	#trm{
+		-moz-column-count:3;
+		-webkit-column-count:3;
+		column-count: 3;
+
+	}
+	#imgnext{
+		text-align: center;
+		background-color: #eeeed6;
+		width: 300px;
+		height: 210px;
+			}
+	img{
+		margin-bottom: 25px;
+	}
+/*
+	footer{
+		color:#d55d5c;
+		position: absolute;
+		bottom: 0;
+	}*/

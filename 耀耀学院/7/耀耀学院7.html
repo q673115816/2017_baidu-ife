@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    table {
+      width: 500px;
+      text-align: center;
+      border-collapse: collapse;
+      border: 1px solid #ccc;
+      line-height: 32px;
+    }
+
+    th {
+      width: 20%;
+      color: #fff;
+      border: 1px solid #ccc;
+      background-color: #5b5b5b;
+    }
+
+    td {
+      border: 1px solid #ccc;
+    }
+
+    .wrap {
+      position: absolute;
+      left: 70%;
+      top: 50%;
+      width: 8px;
+      transform: translate(-50%, -50%);
+      height: 16px;
+    }
+
+    .top {
+      position: absolute;
+      top: 0;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 6px solid white;
+    }
+
+    .bottom {
+      position: absolute;
+      bottom: 0;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid white;
+    }
+  </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  var arr = ['姓名', '语文', '数学', '英语', '总分'];
+  var table = document.createElement('table');
+  document.body.appendChild(table);
+  var tr = document.createElement('tr');
+  table.appendChild(tr);
+  for (let i = 0; i < arr.length; i++) {
+    var th = document.createElement('th');
+    th.innerText = arr[i];
+    th.style.position = 'relative';
+    if (i !== 0) {
+      var wrap = document.createElement('div');
+      wrap.className = 'wrap';
+      wrap.innerHTML = '<span class = "top"></span> <span class="bottom"></span>';
+      th.appendChild(wrap);
+
+    }
+    tr.appendChild(th);
+  }
+
+  var top = document.getElementsByClassName('top');
+  var bottom = document.getElementsByClassName('bottom');
+  for (let i = 0; i < top.length; i++) {
+    top[i].addEventListener('click', topclick, false);
+    bottom[i].addEventListener('click', bottomclick, false);
+    alert(1);
+  }
+
+  function topclick() {
+    alert(1);
+  }
+
+  function bottomclick() {
+    alert(1);
+  }
+
+  function Item(obj) {
+    obj = obj || {};
+    if (!obj || !obj.name) {
+      return;
+    }
+    this.name = obj.name || "";
+    this.chinese = obj.chinese || 0;
+    this.maths = obj.maths || 0;
+    this.eng = obj.eng || 0;
+    this.sum = this.chinese + this.maths + this.eng
+  }
+  Item.prototype.add = function () {
+    var tr = document.createElement('tr');
+    table.appendChild(tr);
+    for (x in this) {
+      if (!this.hasOwnProperty(x)) {
+        continue;
+      }
+      var td = document.createElement('td');
+      td.className = x + '';
+      tr.appendChild(td);
+      td.innerText = this[x];
+    }
+  }
+
+  function sort1(arr) {
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = 0; j < arr.length - i; j++) {
+        if (arr[j] > arr[j + 1]) {
+          var tmp = arr[i];
+          arr[i] = arr[j + 1];
+          arr[j + 1] = tmp
+        }
+      }
+    }
+    return arr;
+  }
+
+
+
+
+
+
+
+  var a1 = {
+    name: '小明',
+    chinese: 80,
+    maths: 90,
+    eng: 70
+  }
+  var a2 = {
+    name: '小红',
+    chinese: 90,
+    maths: 60,
+    eng: 90
+  }
+  var a3 = {
+    name: '小亮',
+    chinese: 60,
+    maths: 100,
+    eng: 70
+  }
+  new Item(a1).add();
+  new Item(a2).add();
+  new Item(a3).add();
+</script>

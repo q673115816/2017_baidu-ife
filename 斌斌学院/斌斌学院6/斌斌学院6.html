@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>任务六</title>
+	<link rel="stylesheet" href="reset.css">
+	<style>
+	body {
+			font-family: "黑体";
+		}
+
+		.fl {
+			float: left;
+		}
+
+		.fr {
+			float: right;
+		}
+
+		.clearfix:after {
+			content: ".";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;
+		}
+
+		.wrap {
+			width: 390px;
+			box-shadow: 0 0 5px #000;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%);
+			padding: 5px;
+			overflow: hidden;
+		}
+
+		textarea {
+			clear: both;
+		}
+	button {
+		margin: 0 5px;
+		background-color: #fff;
+		border: 1px solid #ECECEC;
+		border-radius: 3px;
+		padding: 4px 6px;
+		cursor: pointer;
+	}
+	.nav {
+		text-align: center;
+	}
+	.find,
+	.findch {
+		vertical-align: middle;
+	}
+	.redbox {
+		padding: 0 12px;
+		height: 35px;
+		border: red solid 2px;
+		font-size: 16px;
+		line-height: 35px;
+		text-align: center;
+		margin: 2px 4px;
+		float: left;
+	}
+	.findch {
+		width: 30px;
+	}
+	</style>
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="nav clearfix">
+			<textarea name="write" id="write" cols="62" rows="10"></textarea>
+			<button class="fl">左侧入</button>
+			<button class="fl">右侧入</button>
+			<input type="text" id="text_s">
+			<input type="button" id="findch" class="findch" value="查找">
+			<button class="fr">左侧出</button>
+			<button class="fr">右侧出</button>
+		</div>
+		<ul class="content" id="content">
+			<li class="redbox">22</li>
+			<li class="redbox">1</li>
+		</ul>
+	</div>
+	<script>
+		var adiv = document.getElementsByClassName("content")[0],
+			// divs = adiv.getElementsByTagName('div'),
+			btns = document.getElementsByTagName('button'),
+			write = document.getElementById('write'),
+			text_s = document.getElementById("text_s"),
+			findch = document.getElementById("findch");
+		window.onload = function () {
+			for (var i = 0; i < btns.length; i++) {
+				btns[1].onclick = function () {
+					click();
+				}
+				btns[0].onclick = function () {
+					add();
+				}
+				btns[3].onclick = function () {
+					remove();
+				}
+				btns[2].onclick = function () {
+					removeout();
+				}
+			}
+			findch.onclick = function () {
+				sch();
+			}
+			// adiv.addEventListener('click',rm);      ///撸撸乐
+			addEventHandler(adiv, 'click', remove1); /////高级借鉴版
+		}
+		// function rm(e){
+		// 	var divv = adiv.getElementsByTagName('div');
+		// 	e = e || window.event; 　//IE window.event
+		// 	var t = e.target || e.srcElement; //目标对象
+		// 	var classname = t.className;
+		// 	if( classname == 'redbox' );
+		// 	{
+		// 	    adiv.removeChild(t);
+		// 	}        
+		// }
+		//右进
+		function click(argument) {
+			var ldiv = document.createElement("li");
+			ldiv.className = "redbox";
+			ldiv.innerHTML = write.value;
+			adiv.appendChild(ldiv);
+			write.value = null;
+		}
+		//左进
+		function add() {
+			var ldiv = document.createElement("li"),
+				divs = adiv.getElementsByTagName('li');
+			ldiv.className = "redbox";
+			ldiv.innerHTML = write.value;
+			adiv.insertBefore(ldiv, divs[0]);
+			write.value = null;
+		}
+		//右出
+		function remove() {
+			var ss = document.getElementById('content').lastChild;
+			alert(ss.innerText);
+			adiv.removeChild(ss);
+		}
+		//左出
+		function removeout() {
+			var sss = document.getElementById('content').childNodes[0];
+			alert(sss.innerText);
+			adiv.removeChild(sss);
+		}
+
+		function removein(obj) {
+			this.onclick = function () {
+				var pp = obj.parentNode;
+				pp.removeChild(obj);
+			}
+		}
+
+		function remove1(e) {
+			e = e || window.event;　 //IE window.event
+			var t = e.target || e.srcElement; //目标对象
+			var classname = t.className;
+			if (classname == 'redbox') {
+				adiv.removeChild(t);
+			}
+		}
+		/*1 
+		2  *  oTarget：监听对象 
+		3  *  sEventType：监听事件类型，如click,mouseover 
+		4  *  fnHandler：监听函数 
+		5  */
+		function addEventHandler(oTarget, sEventType, fnHandler) {
+			if (oTarget.addEventListener) { //监听IE9，谷歌和火狐  
+				oTarget.addEventListener(sEventType, fnHandler, false);
+			} else if (oTarget.attachEvent) { //IE  
+				oTarget.attachEvent("on" + sEventType, fnHandler);
+			} else {
+				oTarget["on" + sEventType] = fnHandler;
+			}
+		}
+		//搜索
+		function sch() {
+			var txt = document.getElementById("text_s").value;
+			if (txt == "") {
+				alert("请输入查询数据！")
+				return;
+			}
+			var box0 = document.getElementById("content");
+			var nodes = box0.childNodes;
+			var len = nodes.length;
+			for (var i = 0; i < len; i++) {
+				var nd0 = nodes[i];
+				var str = nd0.innerText;
+				if (str.indexOf(txt) > -1) {
+					nd0.style.backgroundColor = "#f00";
+					nd0.style.color = "#fff";
+				} else {
+					nd0.style.backgroundColor = "#fff";
+					nd0.style.color = "#f00";
+				}
+
+			}
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>耀耀学院1</title>
+    <style>
+        html,
+        body {
+            font-family: "微软雅黑";
+        }
+
+        .wrap {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 500px;
+            transform: translate(-50%, -50%);
+        }
+
+        th {
+            padding: 0 20px;
+            font-size: 24px;
+            line-height: 56px;
+        }
+
+        input {
+            height: 56px;
+            width: 324px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: 0;
+            padding-left: 10px;
+            font-size: 36px;
+            line-height: 56px;
+        }
+
+        button {
+            height: 60px;
+            width: 80px;
+            border: 0;
+            border-radius: 5px;
+            padding: 0;
+            outline: 0;
+            cursor: pointer;
+            background: skyblue;
+            color: #fff;
+            font-size: 24px;
+            font-family: "微软雅黑";
+            line-height: 56px;
+            float: right;
+        }
+
+        span {
+            color: #ccc;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrap">
+    <form action="">
+        <table>
+            <tr>
+                <th>名称</th>
+                <td>
+                    <input type="text" id="usename" data-id="usename">
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <span class="output" id="usenameout">必填，长度为4~16个字符</span>
+                </td>
+            </tr>
+            <tr>
+                <th>密码</th>
+                <td>
+                    <input type="password" id="password" data-id="password">
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <span class="output" id="passout">必填，长度为4~16个字符</span>
+                </td>
+            </tr>
+            <tr>
+                <th>密码确认</th>
+                <td>
+                    <input type="password" id="password_rp" data-id="password">
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <span class="output" id="pass_rp_out">必填，长度为4~16个字符</span>
+                </td>
+            </tr>
+            <tr>
+                <th>邮箱</th>
+                <td>
+                    <input type="email" id="email" data-id="email">
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <span class="output" id="emailout">必填，长度为4~16个字符</span>
+                </td>
+            </tr>
+            <tr>
+                <th>手机</th>
+                <td>
+                    <input type="tel" id="tel" data-id="tel">
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <span class="output" id="telout">必填，长度为4~16个字符</span>
+                </td>
+            </tr>
+        </table>
+        <button type="button" id="button">验证</button>
+    </form>
+</div>
+<script>
+    var button = document.getElementById("button");
+    var body = document.getElementsByTagName('body');
+    var usename = document.getElementById("usename");
+    var usenameout = document.getElementById("usenameout");
+    var password = document.getElementById("password");
+    var passout = document.getElementById("passout");
+    var password_rp = document.getElementById("password_rp");
+    var pass_rp_out = document.getElementById("pass_rp_out");
+    var email = document.getElementById("email");
+    var emailout = document.getElementById("emailout");
+    var tel = document.getElementById("tel");
+    var telout = document.getElementById("telout");
+    var input = document.getElementsByTagName('input');
+    var output = document.getElementsByTagName('span');
+    var rule = [
+        {
+            name: 'name',
+            tips: '请输入正确的名称',
+            reg : /$\w{5-12}$/,
+        },
+        {
+            name: 'password',
+            tips: '请输入正确的密码',
+            reg : /$\d{6-12}$/,
+        },
+        {
+            name: 'email',
+            tips: '请输入正确的邮箱',
+            reg : /\w+@\w+\.+\w+(\.\w+)?/,
+        },
+        {
+            name: 'tel',
+            tips: '请输入正确的手机号',
+            reg : /$\d{11}$/
+        },
+    ]
+    window.onload = function () {
+        console.log(button.nodeName);
+        for (var i = 0; i < input.length; i++) {
+            input[i].addEventListener('focus', fn, false);
+            input[i].addEventListener('blur', panduan, false);
+            input[i].addEventListener('keyup', panduan, false);
+            input[i].setAttribute('num', i);
+        }
+        button.addEventListener('click', bn_pd, false);
+        //   button.onclick = function () {
+        //     var e = event || window.event;
+        //     //window.event?e.returnValue = false:e.preventDefault();
+        //     window.event ? e.cancelBubble = true : e.stopPropagation();
+        //     for (var i = 0; i < input.length; i++) {
+        //       // input[i].setAttribute('num', i);
+        //     }
+        //   }
+    }
+
+    function fn(e) {
+        var e = event || window.event;
+        window.event ? e.cancelBubble = true : e.stopPropagation();
+        var val = this.value;
+        var _that = this.getAttribute('num');
+        output[_that].style.display = "inline-block";
+    }
+
+    function panduan(e) {
+        var e = event || window.event;
+        window.event ? e.cancelBubble = true : e.stopPropagation();
+        var val = this.value;
+        var re = /^[a-zA-Z]\w{5,16}$/; //直接正则匹配，未掌握
+        var flag = re.test(val);
+        var _that = this.getAttribute('num');
+        if (!val) {
+            output[_that].innerHTML = "姓名不能为空";
+            output[_that].style.color = "red";
+            this.style.borderColor = "red";
+        } ///转化成字符未实现
+        else if (flag) {
+            output[_that].innerHTML = "名称格式正确";
+            output[_that].style.color = "yellowgreen";
+            this.style.borderColor = "yellowgreen";
+        } else {
+            output[_that].innerHTML = "名称格式错误";
+            output[_that].style.color = "red";
+            this.style.borderColor = "red";
+        }
+    }
+
+    function bn_pd(arguments) {
+        for (var i = 0; i < input.length; i++) {
+            output[i].style.display = "inline-block";
+            var val = input[i].value;
+            var re = /^[a-zA-Z]\w{5,16}$/; //直接正则匹配，未掌握 var flag = re.test(val); var _that = this.getAttribute('num');
+            if (!val) {
+                output[i].innerHTML = "姓名不能为空";
+                output[i].style.color = "red";
+                input[i].style.borderColor = "red";
+            } ///转化成字符未实现
+            else if (flag) {
+                output[i].innerHTML = "名称格式正确";
+                output[i].style.color = "yellowgreen";
+                input[i].style.borderColor = "yellowgreen";
+            } else {
+                output[i].innerHTML = "名称格式错误";
+                output[i].style.color = "red";
+                input[i].style.borderColor = "red";
+            }
+
+        }
+    }
+
+    // window.onclick = function () {
+    //   for (var i = 0; i < input.length; i++) {
+    //     output[i].innerHTML = "必填，长度为4~16个字符";
+    //     output[i].style.color = "#ccc";
+    //     input[i].style.borderColor = "#ccc";
+    //   }
+    // }
+</script>
+</body>
+
+</html>

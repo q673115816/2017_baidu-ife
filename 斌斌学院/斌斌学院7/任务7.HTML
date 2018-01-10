@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      border: 1px solid #000;
+      width: 47%;
+      height: 80%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .wrap {
+      position: absolute;
+      width: 800px;
+      height: 200px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .active {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div>
+      <div>
+        <div></div>
+        <div></div>
+      </div>
+      <div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div>
+      <div>
+        <div></div>
+        <div></div>
+      </div>
+      <div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+<script>
+  var boxs = document.getElementsByTagName('div');
+  for (var i = 0; i < boxs.length; i++) {
+    boxs[i].addEventListener('click', fn, false);
+  }
+
+  function fn(e) {
+    var e = e || window.event;
+    t = e.target || e.srcElement;
+    window.event ? cancelBubble = true : e.stopPropagation();
+    for (var i = 0; i < boxs.length; i++) {
+      boxs[i].style.backgroundColor = '#fff';
+    }
+    t.style.backgroundColor = 'red';
+  }
+
+
+
+  // console.log(boxs);
+  // for (var i = 0; i < boxs.length; i++) {
+  //   for (var j = 0; j < boxs.length; j++) {
+  //     // boxs[j].className = "";
+  //   }
+  //   var timer = setTimeout(function () {
+  //     boxs[i].className = "active";
+  //   }, 500);
+  // }
+  // var timer = setTimeout(function () {
+  //   this.style.background = "red";
+  // }, 500);
+</script>

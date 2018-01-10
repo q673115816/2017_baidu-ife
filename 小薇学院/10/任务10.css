@@ -1,0 +1,41 @@
+.wrap {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+div {
+	padding: 20px;
+}
+.go {
+	width: 150px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	/*margin: 20px;*/
+}
+.red {
+	border: 1px solid #f00;
+}
+.down1 {
+	height: 120px;
+}
+.down2 {
+	height: 100px;
+}
+.down3 {
+	height: 40px;
+}
+.down4 {
+	border: 1px solid #0f0;
+	height: 200px;
+}
+@media screen and (max-width: 640px){
+	.down4 {order: -1;}
+	.wrap {
+		align-items: flex-start;
+	}
+	.down4 {
+		margin-bottom: 20px;
+	}// 毗邻元素才能叠加
+}

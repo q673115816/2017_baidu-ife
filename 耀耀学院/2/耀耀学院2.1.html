@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>耀耀学院1</title>
+    <style>
+        html,
+        body {
+            font-family: "微软雅黑";
+        }
+
+        .wrap {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 500px;
+            transform: translate(-50%, -50%);
+        }
+
+        th {
+            padding: 0 20px;
+            font-size: 24px;
+            line-height: 56px;
+        }
+
+        input {
+            height: 56px;
+            width: 324px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: 0;
+            padding-left: 10px;
+            font-size: 36px;
+            line-height: 56px;
+        }
+
+        button {
+            height: 60px;
+            width: 80px;
+            border: 0;
+            border-radius: 5px;
+            padding: 0;
+            outline: 0;
+            cursor: pointer;
+            background: skyblue;
+            color: #fff;
+            font-size: 24px;
+            font-family: "微软雅黑";
+            line-height: 56px;
+            float: right;
+        }
+
+        span {
+            color: #ccc;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrap">
+    <form action="">
+        <table>
+            <tr>
+                <th>名称</th>
+                <td>
+                    <input type="text" data-id="name">
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <span class="output">必填，长度为4~16个字符</span>
+                </td>
+            </tr>
+            <tr>
+                <th>密码</th>
+                <td>
+                    <input type="password" data-id="password">
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <span class="output">必填，长度为4~16个字符</span>
+                </td>
+            </tr>
+            <tr>
+                <th>密码确认</th>
+                <td>
+                    <input type="password" data-id="password">
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <span class="output">必填，长度为4~16个字符</span>
+                </td>
+            </tr>
+            <tr>
+                <th>邮箱</th>
+                <td>
+                    <input type="email" data-id="email">
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <span class="output">必填，长度为4~16个字符</span>
+                </td>
+            </tr>
+            <tr>
+                <th>手机</th>
+                <td>
+                    <input type="tel" data-id="tel">
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <span class="output">必填，长度为4~16个字符</span>
+                </td>
+            </tr>
+        </table>
+        <button type="button" id="button">验证</button>
+    </form>
+</div>
+</body>
+</html>
+<script>
+    var rule = [
+        {
+            name: 'name',
+            tips: '请输入正确的名称(6-12位字母开头)',
+            reg: /^[A-Za-z]\w{5,11}$/,
+        },
+        {
+            name: 'password',
+            tips: '请输入正确的密码(6-12位纯数字)',
+            reg: /^\d{6,12}$/,
+        },
+        {
+            name: 'email',
+            tips: '请输入正确的邮箱',
+            reg: /^\w+@\w+\.+\w+(\.\w+)?$/,
+        },
+        {
+            name: 'tel',
+            tips: '请输入正确的手机号',
+            reg: /^\d{11}$/,
+        },
+    ]
+    var btns = document.getElementById('button');
+    var inps = document.getElementsByTagName('input');
+    var span = document.getElementsByClassName('output');
+    btns.addEventListener('click',forall,false);
+    for (var i = 0; i < inps.length; i++) {
+        (function (i) {
+            inps[i].addEventListener('keyup', function () {
+                return check.call(inps[i], i);
+            }, false);
+        })(i)
+    }
+
+    function forall() {
+        for (var i = 0; i < inps.length; i++) {
+             check.call(inps[i],i);
+
+        }
+    }
+    function check(q) {
+        for (var i = 0; i < rule.length; i++) {
+            if (this.dataset.id === rule[i].name) {
+                var num = rule[i];
+                span[q].style.display = 'block';
+                if (!num.reg.test(this.value)) {
+                    this.style.borderColor = 'red';
+                    span[q].innerText = num.tips;
+                    span[q].style.color = 'red';
+                } else {
+                    this.style.borderColor = 'green';
+                    span[q].innerText = '格式正确';
+                    span[q].style.color = 'green';
+                }
+            }
+
+
+        }
+    }
+
+
+</script>
